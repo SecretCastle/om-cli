@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "outDir": "./bin",
+    "removeComments": true,
+    "target": "es5",
+    "strict": true
+  }
+}
