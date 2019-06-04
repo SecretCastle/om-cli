@@ -1,4 +1,4 @@
-#!/usr/bin / env node
+#!/usr/bin/env node
 
 /**
  * @author SecretCastle
@@ -8,7 +8,7 @@
  * @desc typescript
  */
 
-const packageJson = require('./package.json');
+const packageJson = require('../package.json');
 const program = require('commander');
 const colors = require('colors');
 const downloadRep = require('download-git-repo');

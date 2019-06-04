@@ -1,10 +1,10 @@
-# om-cli (omci)
+# om-cli (omcli)
 
 ```
-// 编辑ts文件
+// publish before, complier '.ts' file
 npm run build
-// 执行脚本，具体参考 node bin/index.js -h
-node bin/index.js -t rt
+// run script
+omcli -h
 ```
 
-please follow `omci -h` to create project
+please follow `omcli -h` to create project
