@@ -1,4 +1,4 @@
-# om-cli
+# om-cli (omci)
 
 ```
 // 编辑ts文件
@@ -7,4 +7,4 @@ npm run build
 node bin/index.js -t rt
 ```
 
-please follow `om-cli -h` to create project
+please follow `omci -h` to create project
