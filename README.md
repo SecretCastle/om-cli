@@ -1,10 +1,10 @@
-# om-cli (omcli)
+# om-cli (omci)
 
 ```
 // publish before, complier '.ts' file
 npm run build
 // run script
-omcli -h
+omci -h
 ```
 
-please follow `omcli -h` to create project
+please follow `omci -h` to create project

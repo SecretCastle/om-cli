@@ -73,7 +73,7 @@ program.on('--help', () => {
 program.parse(process.argv);
 
 if (process.argv.length === 2) {
-  console.log(colors.green('Please Use "maron-cli --h" to get help'));
+  console.log(colors.green('Please Use "omci --h" to get help'));
 }
 
 /**
