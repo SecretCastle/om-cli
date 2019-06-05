@@ -35,7 +35,9 @@ interface DepParam {
 
 // 检查node版本，不能低于指定版本
 const version = shell.exec('node --version', { silent: true }).stdout;
-if (version <= packageJson.nodeVersion) {
+// 版本比较
+const vCompareRes = nodeVersionCompare(version, packageJson.nodeVersion);
+if (vCompareRes === -1) {
   console.log(colors.red(`Please Upgrade Your Node Version Above ${packageJson.nodeVersion}`));
   process.exit(1)
 }
@@ -173,5 +175,59 @@ function installDependencies(depParam: DepParam) {
   } else {
     console.log(colors.red('System Error, Please Try Again'))
     process.exit(1);
+  }
+}
+
+function nodeVersionCompare(v1: string, v2: string): number {
+  let GTR = 1; //大于
+  let LSS = -1; //小于
+  let EQU = 0; //等于
+  const v1arr = String(v1).split(".").map(function (a) {
+    return parseInt(a);
+  });
+  const v2arr = String(v2).split(".").map(function (a) {
+    return parseInt(a);
+  });
+  const arrLen = Math.max(v1arr.length, v2arr.length);
+  let result = 0;
+  //排除错误调用
+  if (v1 == undefined || v2 == undefined) {
+    throw new Error();
+  }
+  //检查空字符串，任何非空字符串都大于空字符串
+  if (v1.length == 0 && v2.length == 0) {
+    return EQU;
+  } else if (v1.length == 0) {
+    return LSS;
+  } else if (v2.length == 0) {
+    return GTR;
+  }
+
+  //循环比较版本号
+  for (var i = 0; i < arrLen; i++) {
+    result = inerCompare(v1arr[i], v2arr[i]);
+    if (result == EQU) {
+      continue;
+    } else {
+      break;
+    }
+  }
+
+  return result;
+
+  function inerCompare(n1: number, n2: number) {
+    if (typeof n1 != "number") {
+      n1 = 0;
+    }
+    if (typeof n2 != "number") {
+      n2 = 0;
+    }
+    if (n1 > n2) {
+      return GTR;
+    } else if (n1 < n2) {
+      return LSS;
+    } else {
+      return EQU;
+    }
   }
 }

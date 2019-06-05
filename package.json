@@ -1,6 +1,6 @@
 {
   "name": "omci",
-  "version": "0.0.1",
+  "version": "1.0.3",
   "nodeVersion": "v8.0.0",
   "description": "简单的clone github上的脚手架项目",
   "main": "index.js",
