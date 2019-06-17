@@ -4,7 +4,7 @@
  * @author SecretCastle
  * @email henrychen9314@gmail.com
  * @create date 2019-06-03 22:45:33
- * @modify date 2019-06-03 22:45:33
+ * @modify date 2019-06-17 23:04:01
  * @desc typescript
  */
 
@@ -49,7 +49,9 @@ const VUE_ROOT: string = '#vue'
 // react
 const REACT_ROOT: string = '#react'
 // ts
-const TYPESCRIPT_ROOT = '#ts'
+const TYPESCRIPT_ROOT: string = '#ts'
+// react typescript
+const REACT_TYPESCRIPT_ROOT: string = '#react-ts'
 // common
 const COMMON_ROOT: string = '#common'
 
@@ -63,12 +65,14 @@ program
   .option('-r, --react <f>', 'Create React Project')
   .option('-t, --ts <f>', 'Create TypeScript Project')
   .option('-c, --common <f>', 'Create Common Project')
+  .option('--reacts <f>', 'Create React TypeScript Project')
 
 program.on('--help', () => {
   console.log(colors.yellow(' \nExample:'))
   console.log(colors.yellow('   om-cli --ts tsDemo'))
   console.log(colors.yellow('   om-cli --react reactDemo'))
   console.log(colors.yellow('   om-cli --vue vueDemo'))
+  console.log(colors.yellow('   om-cli --reacts reactTsDemo'))
   console.log(colors.yellow('   om-cli --common Demo \n'))
 })
 
@@ -104,6 +108,11 @@ if (program.ts) {
 if (program.common) {
   const downloadUrl: string = GIT_REMOTE_URL + COMMON_ROOT
   initProject({ dir: root, downloadUrl, filename: program.common });
+}
+
+if (program.reacts) {
+  const downloadUrl: string = GIT_REMOTE_URL + REACT_TYPESCRIPT_ROOT
+  initProject({ dir: root, downloadUrl, filename: program.reacts });
 }
 
 /**
@@ -157,7 +166,7 @@ function installDependencies(depParam: DepParam) {
       if (!err) {
         spinner.succeed(colors.green('install dependencies succeed'));
         console.log(
-          colors.rainbow(
+          colors.green(
             [
               `Success! Created ${depParam.filename} at ${depParam.finalPath}`,
               'Inside that directory, you can run several commands and more:',
